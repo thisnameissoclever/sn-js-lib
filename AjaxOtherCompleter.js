@@ -1,7 +1,8 @@
 //defer classes/ajax/AJAXOtherCompleter.js
-var AJAXOtherCompleter = Class.create(AJAXCompleter, {
-    initialize: function(element, reference) {
-        AJAXCompleter.prototype.initialize.call(this, 'AC.' + reference, reference);
+class AJAXOtherCompleter extends AJAXCompleter {
+    constructor(element, reference) {
+		super();
+		AJAXCompleter.prototype.initialize.call(this, 'AC.' + reference, reference);
         this.className = "AJAXReferenceCompleter";
         this.dirty = false;
         this.matched = false;
