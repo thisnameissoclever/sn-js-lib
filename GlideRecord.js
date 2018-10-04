@@ -4,7 +4,7 @@
  * http://www.servicenowguru.com/scripting/gliderecord-query-cheat-sheet/
  */
 //defer classes/GlideRecord.js
-var GlideRecord = Class.create({
+var GlideRecord = {
 	AJAX_PROCESSOR: "AJAXGlideRecord",
 	initialized: false,
 	
