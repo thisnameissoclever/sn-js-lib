@@ -1,171 +1,166 @@
-var GlideDate = Class.create();
-GlideDate.prototype = {
-	//METHODS:
-	getByFormat: function() {},
-	getMonthNoTZ: function() {},
-	addWeeks: function() {},
-	addWeeksUTC: function() {},
-	setMonthUTC: function() {},
-	getDaysInMonthLocalTime: function() {},
-	hasChoices: function() {},
-	setGlideDateTime: function() {},
-	setNumericValue: function() {},
-	setMonthLocalTime: function() {},
-	getMonthLocalTime: function() {},
-	getWeekOfYearUTC: function() {},
-	setDayOfMonthLocalTime: function() {},
-	addDays: function() {},
-	setElement: function() {},
-	getMonth: function() {},
-	onOrAfter: function() {},
-	getCounter: function() {},
-	getInternalFormattedLocalTime: function() {},
-	subtract: function() {},
-	getWeekOfYearLocalTime: function() {},
-	getUserTimeZone: function() {},
-	getChoices: function() {},
-	getUserFormattedLocalTime: function() {},
-	getUTCValue: function() {},
-	getUTCMidnight: function() {},
-	getDaysInMonthUTC: function() {},
-	getYear: function() {},
-	addYearsLocalTime: function() {},
-	getYearLocalTime: function() {},
-	afterOwnerUpdate: function() {},
-	wait: function() {},
-	setInitialValue: function() {},
-	getNumericValue: function() {},
-	handlesPreviousValueTracking: function() {},
-	addMonthsUTC: function() {},
-	addDaysLocalTime: function() {},
-	addYears: function() {},
-	notify: function() {},
-	getDSTOffset: function() {},
-	getXMLValue: function() {},
-	setDayOfMonth: function() {},
-	getYearNoTZ: function() {},
-	addMonthsLocalTime: function() {},
-	getDisplayValueInternal: function() {},
-	getDate: function() {},
-	after: function() {},
-	getTZOffset: function() {},
-	setMonth: function() {},
-	addDuration: function() {},
-	getInternalMidnight: function() {},
-	isValid: function() {},
-	setDisplayValueInternalWithAlternates: function() {},
-	setValueUTC: function() {},
-	addMonths: function() {},
-	getYearUTC: function() {},
-	setDebugTZ: function() {},
-	getCalendarInTimeZone: function() {},
-	equals: function() {},
-	getRaw: function() {},
-	toString: function() {},
-	getDayOfMonth: function() {},
-	handlesDefaultValue: function() {},
-	getDaysInMonth: function() {},
-	before: function() {},
-	getDayOfWeekLocalTime: function() {},
-	afterOwnerDelete: function() {},
-	compareTo: function() {},
-	getLocalDate: function() {},
-	getDayOfWeek: function() {},
-	setYearUTC: function() {},
-	getDayOfWeekUTC: function() {},
-	addYearsUTC: function() {},
-	afterOwnerInsert: function() {},
-	add: function() {},
-	getDisplayValueWithoutTZ: function() {},
-	setDisplayValue: function() {},
-	getMonthUTC: function() {},
-	addSeconds: function() {},
-	getLocalTime: function() {},
-	handlesChangeDetection: function() {},
-	getDayOfMonthUTC: function() {},
-	setDefaultValue: function() {},
-	getTime: function() {},
-	notifyAll: function() {},
-	isDST: function() {},
-	changes: function() {},
-	setNeutralTZ: function() {},
-	hashCode: function() {},
-	getDayOfMonthLocalTime: function() {},
-	getSpanTime: function() {},
-	getErrorMsg: function() {},
-	setDisplayValueInternal: function() {},
-	onOrBefore: function() {},
-	setDayOfMonthUTC: function() {},
-	setXMLValue: function() {},
-	getDayOfMonthNoTZ: function() {},
-	hasDate: function() {},
-	setYearLocalTime: function() {},
-	setTZ: function() {},
-	setYear: function() {},
-	getValue: function() {},
-	setValue: function() {},
-	getDisplayValue: function() {},
-	wasChangedInStream: function() {},
-	addDaysUTC: function() {},
-	addWeeksLocalTime: function() {},
-
-//OBJECTS:
-	displayValueInternal: {},
-	raw: {},
-	userFormattedLocalTime: {},
-	displayValueWithoutTZ: {},
-	userTimeZone: {},
-	errorMsg: {},
-	displayValue: {},
-	date: {},
-	localDate: {},
-	UTCValue: {},
-	value: {},
-	internalFormattedLocalTime: {},
-	counter: {},
-	localTime: {},
-	XMLValue: {},
-	time: {},
-
-//PRIMITIVES:
-	year: 'prop',
-	displayValueInternalWithAlternates: 'prop',
-	defaultValue: 'prop',
-	dayOfWeekUTC: 'prop',
-	weekOfYearUTC: 'prop',
-	element: 'prop',
-	monthNoTZ: 'prop',
-	daysInMonthUTC: 'prop',
-	dayOfMonth: 'prop',
-	choices: 'prop',
-	valid: 'prop',
-	neutralTZ: 'prop',
-	dayOfWeek: 'prop',
-	dayOfMonthNoTZ: 'prop',
-	daysInMonth: 'prop',
-	valueUTC: 'prop',
-	TZ: 'prop',
-	UTCMidnight: 'prop',
-	yearUTC: 'prop',
-	weekOfYearLocalTime: 'prop',
-	monthLocalTime: 'prop',
-	DST: 'prop',
-	spanTime: 'prop',
-	month: 'prop',
-	glideDateTime: 'prop',
-	internalMidnight: 'prop',
-	numericValue: 'prop',
-	DSTOffset: 'prop',
-	yearNoTZ: 'prop',
-	calendarInTimeZone: 'prop',
-	TZOffset: 'prop',
-	dayOfMonthLocalTime: 'prop',
-	daysInMonthLocalTime: 'prop',
-	byFormat: 'prop',
-	yearLocalTime: 'prop',
-	dayOfMonthUTC: 'prop',
-	dayOfWeekLocalTime: 'prop',
-	monthUTC: 'prop',
-	debugTZ: 'prop'
-};
-
+class GlideDate {
+	constructor() {
+		this.displayValueInternal = {};
+		this.raw = {};
+		this.userFormattedLocalTime = {};
+		this.displayValueWithoutTZ = {};
+		this.userTimeZone = {};
+		this.errorMsg = {};
+		this.displayValue = {};
+		this.date = {};
+		this.localDate = {};
+		this.UTCValue = {};
+		this.value = {};
+		this.internalFormattedLocalTime = {};
+		this.counter = {};
+		this.localTime = {};
+		this.XMLValue = {};
+		this.timethis.year = '';
+		this.displayValueInternalWithAlternates = '';
+		this.defaultValue = '';
+		this.dayOfWeekUTC = '';
+		this.weekOfYearUTC = '';
+		this.element = '';
+		this.monthNoTZ = '';
+		this.daysInMonthUTC = '';
+		this.dayOfMonth = '';
+		this.choices = '';
+		this.valid = '';
+		this.neutralTZ = '';
+		this.dayOfWeek = '';
+		this.dayOfMonthNoTZ = '';
+		this.daysInMonth = '';
+		this.valueUTC = '';
+		this.TZ = '';
+		this.UTCMidnight = '';
+		this.yearUTC = '';
+		this.weekOfYearLocalTime = '';
+		this.monthLocalTime = '';
+		this.DST = '';
+		this.spanTime = '';
+		this.month = '';
+		this.glideDateTime = '';
+		this.internalMidnight = '';
+		this.numericValue = '';
+		this.DSTOffset = '';
+		this.yearNoTZ = '';
+		this.calendarInTimeZone = '';
+		this.TZOffset = '';
+		this.dayOfMonthLocalTime = '';
+		this.daysInMonthLocalTime = '';
+		this.byFormat = '';
+		this.yearLocalTime = '';
+		this.dayOfMonthUTC = '';
+		this.dayOfWeekLocalTime = '';
+		this.monthUTC = '';
+		this.debugTZ = '';
+	}
+	
+	getByFormat() {}
+	getMonthNoTZ() {}
+	addWeeks() {}
+	addWeeksUTC() {}
+	setMonthUTC() {}
+	getDaysInMonthLocalTime() {}
+	hasChoices() {}
+	setGlideDateTime() {}
+	setNumericValue() {}
+	setMonthLocalTime() {}
+	getMonthLocalTime() {}
+	getWeekOfYearUTC() {}
+	setDayOfMonthLocalTime() {}
+	addDays() {}
+	setElement() {}
+	getMonth() {}
+	onOrAfter() {}
+	getCounter() {}
+	getInternalFormattedLocalTime() {}
+	subtract() {}
+	getWeekOfYearLocalTime() {}
+	getUserTimeZone() {}
+	getChoices() {}
+	getUserFormattedLocalTime() {}
+	getUTCValue() {}
+	getUTCMidnight() {}
+	getDaysInMonthUTC() {}
+	getYear() {}
+	addYearsLocalTime() {}
+	getYearLocalTime() {}
+	afterOwnerUpdate() {}
+	wait() {}
+	setInitialValue() {}
+	getNumericValue() {}
+	handlesPreviousValueTracking() {}
+	addMonthsUTC() {}
+	addDaysLocalTime() {}
+	addYears() {}
+	notify() {}
+	getDSTOffset() {}
+	getXMLValue() {}
+	setDayOfMonth() {}
+	getYearNoTZ() {}
+	addMonthsLocalTime() {}
+	getDisplayValueInternal() {}
+	getDate() {}
+	after() {}
+	getTZOffset() {}
+	setMonth() {}
+	addDuration() {}
+	getInternalMidnight() {}
+	isValid() {}
+	setDisplayValueInternalWithAlternates() {}
+	setValueUTC() {}
+	addMonths() {}
+	getYearUTC() {}
+	setDebugTZ() {}
+	getCalendarInTimeZone() {}
+	equals() {}
+	getRaw() {}
+	toString() {}
+	getDayOfMonth() {}
+	handlesDefaultValue() {}
+	getDaysInMonth() {}
+	before() {}
+	getDayOfWeekLocalTime() {}
+	afterOwnerDelete() {}
+	compareTo() {}
+	getLocalDate() {}
+	getDayOfWeek() {}
+	setYearUTC() {}
+	getDayOfWeekUTC() {}
+	addYearsUTC() {}
+	afterOwnerInsert() {}
+	add() {}
+	getDisplayValueWithoutTZ() {}
+	setDisplayValue() {}
+	getMonthUTC() {}
+	addSeconds() {}
+	getLocalTime() {}
+	handlesChangeDetection() {}
+	getDayOfMonthUTC() {}
+	setDefaultValue() {}
+	getTime() {}
+	notifyAll() {}
+	isDST() {}
+	changes() {}
+	setNeutralTZ() {}
+	hashCode() {}
+	getDayOfMonthLocalTime() {}
+	getSpanTime() {}
+	getErrorMsg() {}
+	setDisplayValueInternal() {}
+	onOrBefore() {}
+	setDayOfMonthUTC() {}
+	setXMLValue() {}
+	getDayOfMonthNoTZ() {}
+	hasDate() {}
+	setYearLocalTime() {}
+	setTZ() {}
+	setYear() {}
+	getValue() {}
+	setValue() {}
+	getDisplayValue() {}
+	wasChangedInStream() {}
+	addDaysUTC() {}
+	addWeeksLocalTime() {}
+}
