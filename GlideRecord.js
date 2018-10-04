@@ -577,7 +577,7 @@ var GlideRecord = {
 	deleteMultiple: function() {
 	},
 	z: null
-});
+};
 
 var current = new GlideRecord(),
 	previous = new GlideRecord();
