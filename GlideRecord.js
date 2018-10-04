@@ -462,9 +462,10 @@ var GlideRecord = {
 	},
 	isValid: function() {
 	},
+	/**
+	 * @param String [string]
+	 */
 	isValidField: function(String) {
-	},
-	isValidField: function() {
 	},
 	operation: function() {
 	},
