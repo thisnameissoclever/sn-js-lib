@@ -3,15 +3,16 @@
  * http://wiki.service-now.com/index.php?title=GlideRecord
  * http://www.servicenowguru.com/scripting/gliderecord-query-cheat-sheet/
  */
+
 //defer classes/GlideRecord.js
-var GlideRecord = {
-	AJAX_PROCESSOR: "AJAXGlideRecord",
-	initialized: false,
-	
-	table: "table",
-	encodedQuery: "",
-	
-	initialize: function(tableName) {
+class GlideRecord {
+	constructor(tableName) {
+		this.AJAX_PROCESSOR = "AJAXGlideRecord";
+		this.initialized = false;
+		
+		this.table = "table";
+		this.encodedQuery = "";
+		
 		this.currentRow = -1;
 		this.rows = [];
 		this.conditions = [];
@@ -36,13 +37,13 @@ var GlideRecord = {
 			}
 		}
 		this.initialized = true;
-	},
+		this.z = null;
+	}
 	
-	addActiveQuery: function() {
-	},
+	addActiveQuery() {}
+	addDomainQuery(GlideRecord) {
+	}
 	
-	addDomainQuery: function(GlideRecord) {
-	},
 	/**
 	 * addQuery(String, Object, Object) <br />
 	 * Add a filter to the current query being built.<br />
@@ -63,7 +64,7 @@ var GlideRecord = {
 	 * @param value -- Value to compare against.
 	 *
 	 */
-	addQuery: function(fieldName, operator, value) {
+	addQuery(fieldName, operator, value) {
 		var fName;
 		var fOper;
 		var fValue;
@@ -81,14 +82,15 @@ var GlideRecord = {
 			'oper': fOper,
 			'value': fValue
 		});
-	},
-	/*
+	}
+	
+	/**
 	 * autoSysFields(Boolean) <br />
 	 * Add a filter to the current query being built.
-	 * @param toggle -- If false, it prevents created, created by, updated, and updated by from updating.
+	 * @param toggle {boolean} If false, it prevents created, created by, updated, and updated by from updating.
 	 */
-	autoSysFields: function(toggle) {
-	},
+	autoSysFields(toggle) {
+	}
 	/**
 	 * Set a window (like a slice or substring) of GlideRecords to return, by row index (zero-based).
 	 * Note: chooseWindow (below) INCLUDES the first index, but DOES NOT INCLUDE the last; hence the above iteration.
@@ -97,17 +99,19 @@ var GlideRecord = {
 	 * @param l {number} - The last index (NON-inclusive!)
 	 * @param forceCount {boolean} - If true, will get all possible records within the given query. I don't actually know what this means, this is just what the API docs say.
 	 */
-	chooseWindow: function(f, l, forceCount) {
-	},
-	getEncodedQuery: function() {
+	chooseWindow(f, l, forceCount) {
+	}
+	
+	getEncodedQuery() {
 		var ec = this.encodedQuery;
 		for (var i = 0; i < this.conditions.length; i++) {
 			var q = this.conditions[i];
 			ec += "^" + q['name'] + q['oper'] + q['value'];
 		}
 		return ec;
-	},
-	deleteRecord: function(responseFunction) {
+	}
+	
+	deleteRecordon(responseFunction) {
 		var ajax = new GlideAjax(this.AJAX_PROCESSOR);
 		ajax.addParam("sysparm_type", "delete");
 		ajax.addParam("sysparm_name", this.getTableName());
@@ -120,58 +124,66 @@ var GlideRecord = {
 			responseFunction = doNothing;
 		}
 		ajax.getXML(this._deleteRecord0.bind(this), null, responseFunction);
-	},
-	_deleteRecord0: function(response, responseFunction) {
+	}
+	
+	_deleteRecord0(response, responseFunction) {
 		if (!response || !response.responseXML) {
 			return;
 		}
 		responseFunction(this);
-	},
-	get: function(id) {
+	}
+	get(id) {
 		this.initialize();
 		this.addQuery('sys_id', id);
 		this.query();
 		return this.next();
-	},
-	getTableName: function() {
+	}
+	
+	getTableName() {
 		return this.tableName;
-	},
-	hasNext: function() {
+	}
+	
+	hasNext() {
 		return (this.currentRow + 1 < this.rows.length);
-	},
-	insert: function(responseFunction) {
+	}
+	
+	insert(responseFunction) {
 		return this.update(responseFunction);
-	},
-	gotoTop: function() {
+	}
+	
+	gotoTop() {
 		this.currentRow = -1;
-	},
+	}
+	
 	/**
 	 * next()<br />
 	 * Iterates to the next row.
 	 * @return NULL if there are no more records in the set.
 	 */
-	next: function() {
+	next() {
 		if (!this.hasNext()) {
 			return false;
 		}
 		this.currentRow++;
 		this.loadRow(this.rows[this.currentRow]);
 		return true;
-	},
+	}
+	
 	/**
 	 * nextRecord()<br />
 	 * Iterates to the next row.
 	 * @return NULL if there are no more records in the set.
 	 */
-	nextRecord: function() {
+	nextRecord() {
 		if (!this.hasNext()) {
 			return false;
 		}
 		this.currentRow++;
 		this.loadRow(this.rows[this.currentRow]);
 		return true;
-	},
-	loadRow: function(r) {
+	}
+	
+	loadRow(r) {
 		for (var i = 0; i < r.length; i++) {
 			var name = r[i].name;
 			var value = r[i].value;
@@ -191,8 +203,9 @@ var GlideRecord = {
 				this[name] = value;
 			}
 		}
-	},
-	isDotWalkField: function(name) {
+	}
+	
+	isDotWalkField(name) {
 		for (var i = 0; i < this.displayFields.length; i++) {
 			var fieldName = this.displayFields[i];
 			if (fieldName.indexOf(".") == -1) {
@@ -204,16 +217,20 @@ var GlideRecord = {
 			}
 		}
 		return false;
-	},
-	addOrderBy: function(f) {
+	}
+	
+	addOrderBy(f) {
 		this.orderByFields.push(f);
-	},
-	orderBy: function(f) {
+	}
+	
+	orderBy(f) {
 		this.orderByFields.push(f);
-	},
-	setDisplayFields: function(fields) {
+	}
+	
+	setDisplayFields(fields) {
 		this.displayFields = fields;
-	},
+	}
+	
 	/**
 	 * query(fieldName, value)<br />
 	 * Issues the currently built query with another filter added.<br />
@@ -225,9 +242,10 @@ var GlideRecord = {
 	 * @param value {string=} -- the value you're looking for in that field.
 	 * @return null
 	 */
-	query: function(fieldName, value) {
-	},
-	query: function() {
+	query(fieldName, value) {
+	}
+	
+	query() {
 		var responseFunction = this._parseArgs(arguments);
 		if (getBaseLine(this)) {
 			var rxml = loadXML(g_filter_description.getBaseLine());
@@ -255,14 +273,16 @@ var GlideRecord = {
 			return;
 		}
 		ajax.getXML(this._query0.bind(this), null, responseFunction);
-	},
+	}
+	
 	/**
 	 * Gets the GlideRecord object for a given reference element. MUST BE DOT-CALLED FROM THE OBJECT ITSELF.
 	 * Example: current.u_ref_field.getRefRecord(); //Returns the GlideRecord object for the record in this field
 	 * @returns {GlideRecord} - The GlideRecord object for the value in the GlideElement field it's called upon.
 	 */
-	getRefRecord: function() {
-	},
+	getRefRecord() {
+	}
+	
 	/**
 	 * queryRecord(fieldName, value)<br />
 	 * Issues the currently built query with another filter added.<br />
@@ -274,9 +294,10 @@ var GlideRecord = {
 	 * @param value -- the value you're looking for in that field.
 	 * @return null
 	 */
-	queryRecord: function(fieldName, value) {
-	},
-	queryRecord: function() {
+	queryRecord(fieldName, value) {
+	}
+	
+	queryRecord() {
 		var responseFunction = this._parseArgs(arguments);
 		if (getBaseLine(this)) {
 			var rxml = loadXML(g_filter_description.getBaseLine());
@@ -304,8 +325,9 @@ var GlideRecord = {
 			return;
 		}
 		ajax.getXML(this._query0.bind(this), null, responseFunction);
-	},
-	_parseArgs: function(args) {
+	}
+	
+	_parseArgs(args) {
 		var responseFunction = null;
 		var i = 0;
 		while (i < args.length) {
@@ -326,15 +348,17 @@ var GlideRecord = {
 			}
 		}
 		return responseFunction;
-	},
-	_query0: function(response, responseFunction) {
+	}
+	
+	_query0(response, responseFunction) {
 		if (!response || !response.responseXML) {
 			return;
 		}
 		this._queryResponse(response.responseXML);
 		responseFunction(this);
-	},
-	_queryResponse: function(rxml) {
+	}
+	
+	_queryResponse(rxml) {
 		var rows = [];
 		var items = rxml.getElementsByTagName("item");
 		for (var i = 0; i < items.length; i++) {
@@ -356,14 +380,17 @@ var GlideRecord = {
 			rows.push(fields);
 		}
 		this.setRows(rows);
-	},
-	setRows: function(r) {
+	}
+	
+	setRows(r) {
 		this.rows = r;
-	},
-	setTableName: function(tableName) {
+	}
+	
+	setTableName(tableName) {
 		this.tableName = tableName;
-	},
-	update: function(responseFunction) {
+	}
+	
+	update(responseFunction) {
 		var ajax = new GlideAjax(this.AJAX_PROCESSOR);
 		ajax.addParam("sysparm_type", "save_list");
 		ajax.addParam("sysparm_name", this.getTableName());
@@ -376,35 +403,41 @@ var GlideRecord = {
 			responseFunction = doNothing;
 		}
 		ajax.getXML(this._update0.bind(this), null, responseFunction);
-	},
-	_update0: function(response, responseFunction) {
+	}
+	
+	_update0(response, responseFunction) {
 		if (!response || !response.responseXML) {
 			return;
 		}
 		var answer = this._updateResponse(response.responseXML);
 		responseFunction(this, answer);
-	},
-	_updateResponse: function(rxml) {
+	}
+	
+	_updateResponse(rxml) {
 		var items = rxml.getElementsByTagName("item");
 		if (items && items.length > 0) {
 			return getTextValue(items[0]);
 		}
-	},
-	updateWithReferences: function() {
+	}
 	
-	},
+	updateWithReferences() {
+	
+	}
+	
 	/*
 	 * Set the limit for how many records to fetch.
 	 *  @param maxQuery -- Number of records to return.
 	 *  @return null
 	 */
-	setLimit: function(maxQuery) {
+	setLimit(maxQuery) {
 		this.maxQuerySize = maxQuery;
-	},
-	getLimit: function() {
+	}
+	
+	getLimit() {
 		return this.maxQuerySize;
-	},
-	_getXMLSerialized: function() {
+	}
+	
+	_getXMLSerialized() {
 		var xml = loadXML("<record_update/>");
 		var root = xml.documentElement;
 		root.setAttribute("id", "id_goes_here");
@@ -425,159 +458,233 @@ var GlideRecord = {
 			f.appendChild(t);
 		}
 		return getXMLString(xml);
-	},
+	}
+	
 	
 	//------------------------------------------------------------------------------//
 	//--------------------------Query Functions-------------------------------------//
 	//------------------------------------------------------------------------------//
-	addInactiveQuery: function() {
-	},
-	addNotNullQuery: function(String) {
-	},
-	addNullQuery: function(String) {
-	},
-	addOrCondition: function(String, Object, Object) {
-	},
-	applyEncodedQuery: function(String) {
-	},
-	canCreate: function() {
-	},
-	canDelete: function() {
-	},
-	canRead: function() {
-	},
-	canWrite: function() {
-	},
-	changes: function() {
-	},
-	changesTo: function(state) {
-	},
-	changesFrom: function(state) {
-	},
-	hasAttachments: function() {
-	},
-	instanceOf: function(String) {
-	},
-	isNewRecord: function() {
-	},
-	isValid: function() {
-	},
+	addInactiveQuery() {
+	}
+	
 	/**
-	 * @param String [string]
+	 * Add a query condition requiring that the specified field NOT be null.
+	 * @param fieldName {string}
 	 */
-	isValidField: function(String) {
-	},
-	operation: function() {
-	},
-	orderByDesc: function(String) {
-	},
+	addNotNullQuery(fieldName) {
+	}
+	
+	/**
+	 * Add a query condition requiring that the specified field be null.
+	 * @param fieldName {string}
+	 */
+	addNullQuery(fieldName) {
+	}
+	
+	/**
+	 * Add a TOP-LEVEL "or" condition. <br />
+	 * To add an "or" condition to a specific existing condition, <br />
+	 *  call the .addOrCondition() method of the GlideElement class.
+	 * @param s {string}
+	 * @param o [*]
+	 * @param oo [*]
+	 */
+	addOrCondition(s, o, oo) {
+	}
+	
+	applyEncodedQuery(String) {
+	}
+	
+	canCreate() {
+	}
+	
+	canDelete() {
+	}
+	
+	canRead() {
+	}
+	
+	canWrite() {
+	}
+	
+	changes() {
+	}
+	
+	changesTo(state) {
+	}
+	
+	changesFrom(state) {
+	}
+	
+	hasAttachments() {
+	}
+	
+	instanceOf(String) {
+	}
+	
+	isNewRecord() {
+	}
+	
+	isValid() {
+	}
+	
+	/**
+	 * @param fieldName {string}
+	 */
+	isValidField(fieldName) {
+	}
+	
+	operation() {
+	}
+	
+	orderByDesc(String) {
+	}
+	
 	/**
 	 * Set the current record to be the record that was saved with saveLocation().<br />
 	 * If saveLocation has not been called yet, the current record is set to be the first record of the recordset.
 	 * @return null
 	 */
-	restoreLocation: function() {
-	},
+	restoreLocation() {
+	}
+	
 	/**
 	 * Save the current row number so that we can get back to this location using restoreLocation()
 	 * @return null
 	 */
-	saveLocation: function() {
-	},
+	saveLocation() {
+	}
+	
 	
 	//------------------------------------------------------------------------------//
 	//----------------------------Get Functions-------------------------------------//
 	//------------------------------------------------------------------------------//
-	getAttribute: function(String) {
-	},
-	getClassDisplayValue: function() {
-	},
-	getDisplayValue: function() {
-	},
-	getED: function() {
-	},
-	getElement: function() {
-	},
-	getEscapedDisplayValue: function() {
-	},
-	getFields: function() {
-	},
-	getLabel: function() {
-	},
-	getLink: function(Boolean) {
-	},
-	getLocation: function() {
-	},
-	getRecordClassName: function() {
-	},
-	getRelatedLists: function() {
-	},
-	getRelatedTables: function() {
-	},
+	getAttribute(String) {
+	}
+	
+	getClassDisplayValue() {
+	}
+	
+	getDisplayValue() {
+	}
+	
+	getED() {
+	}
+	
+	getElement() {
+	}
+	
+	getEscapedDisplayValue() {
+	}
+	
+	getFields() {
+	}
+	
+	getLabel() {
+	}
+	
+	getLink(Boolean) {
+	}
+	
+	getLocation() {
+	}
+	
+	getRecordClassName() {
+	}
+	
+	getRelatedLists() {
+	}
+	
+	getRelatedTables() {
+	}
+	
 	/**
 	 * Gets the number of rows in result set.
 	 * @return Integer -- # of Rows.
 	 */
-	getRowCount: function() {
-	},
-	getRowNumber: function() {
-	},
-	getUniqueValue: function() {
-	},
-	getValue: function(fieldToGet) {
-	},
+	getRowCount() {
+	}
+	
+	getRowNumber() {
+	}
+	
+	getUniqueValue() {
+	}
+	
+	/**
+	 * Retrieve the PRIMITIVE value of a given field. <br />
+	 * Does not work with dot-walked or variable fields. For those, append
+	 *  ".toString()" to retrieve a primitive (Example: gr.ref.field.toString())
+	 * @param fieldToGet {string}
+	 */
+	getValue(fieldToGet) {
+	}
+	
 	
 	//------------------------------------------------------------------------------//
 	//----------------------------Set Functions-------------------------------------//
 	//------------------------------------------------------------------------------//
-	setAbortAction: function(Boolean) {
-	},
-	setDisplayValue: function(String, Object) {
-	},
-	setForceUpdate: function(Boolean) {
-	},
-	setLocation: function(Int) {
-	},
-	setNewGuid: function() {
-	},
-	setNewGuidValue: function(String) {
-	},
-	setUseEngines: function(Boolean) {
-	},
-	setQueryReferences: function(Boolean) {
-	},
-	setValue: function(String, Object) {
-	},
-	setWorkflow: function(Boolean) {
-	},
+	setAbortAction(Boolean) {
+	}
+	
+	setDisplayValue(String, Object) {
+	}
+	
+	setForceUpdate(Boolean) {
+	}
+	
+	setLocation(Int) {
+	}
+	
+	setNewGuid() {
+	}
+	
+	setNewGuidValue(String) {
+	}
+	
+	setUseEngines(Boolean) {
+	}
+	
+	setQueryReferences(Boolean) {
+	}
+	
+	setValue(String, Object) {
+	}
+	
+	setWorkflow(Boolean) {
+	}
+	
 	
 	//------------------------------------------------------------------------------//
 	//----------------------------Update Functions----------------------------------//
 	//------------------------------------------------------------------------------//
-	applyTemplate: function(Template) {
-	},
-	update: function(Object) {
-	},
+	applyTemplate(Template) {
+	}
+	
+	update(Object) {
+	}
+	
 	/**
 	 * To use updateMultiple, ALWAYS use .setValue(), never use pass-by-reference.
 	 * Also, DO perform the .query(), but don't use .next().
 	 * Just add your conditions, do query, use .setValue() to change your value, and then call .updateMultiple(). That's it.
 	 */
-	updateMultiple: function() {
-	},
+	updateMultiple() {
+	}
+	
 	
 	//------------------------------------------------------------------------------//
 	//----------------------------Insert Functions----------------------------------//
 	//------------------------------------------------------------------------------//
-	newRecord: function() {
-	},
+	newRecord() {
+	}
+	
 	
 	//------------------------------------------------------------------------------//
 	//----------------------------Delete Functions----------------------------------//
 	//------------------------------------------------------------------------------//
-	deleteMultiple: function() {
-	},
-	z: null
+	deleteMultiple() {
+	}
 };
 
 var current = new GlideRecord(),
