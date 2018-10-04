@@ -45,6 +45,12 @@ class GlideRecord {
 	}
 	
 	/**
+	 * Accepts an encoded query (such as one acquired from the list query builder) and adds its filter parameters as query parameters on the current GlideRecord object.
+	 * @param q {string}
+	 */
+	addEncodedQuery(q) {}
+	
+	/**
 	 * addQuery(String, Object, Object) <br />
 	 * Add a filter to the current query being built.<br />
 	 * Operator Can Be: <br />

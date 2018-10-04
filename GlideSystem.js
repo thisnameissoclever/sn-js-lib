@@ -199,7 +199,7 @@ function GlideSystem () {
 	 * Logs a warning, and the source.
 	 * NOT AVAILABLE IN SCOPED APPS!
 	 * @param msg {string}
-	 * @param source {string}
+	 * @param source [string]
 	 */
 	this.logWarning = function(msg, source) {};
 	
