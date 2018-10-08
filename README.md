@@ -14,3 +14,9 @@ Learning ServiceNow: http://lsn.snc.guru/
 The ServiceNow Development Handbook: http://handbook.snc.guru/
 
 You can find documentation on how to import and use this library in your IDE, including common/standard keyboard shortcuts to make effective use of the JSDoc documentation in the libraries, at this link: http://lib.snc.guru/
+
+
+The following people have made significant contributions to this project:
+-Tim Woodruff (TimothyWoodruff.com)
+-Garrett Griffin (@SNC_GarrettNow)
+-Breyton Barber (dev.breyton.barber@gmail.com)
