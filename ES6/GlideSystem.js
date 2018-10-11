@@ -366,7 +366,7 @@ class GlideSystem {
      * value.
      * @param {String} key The key for the property whose value should be returned.
      * @param {Object} alt (Optional) Alternate object to return if the property is not found.
-     * @returns The value of the Glide property, or the alternate object defined above.
+     * @returns {String} The value of the Glide property, or the alternate object defined above.
      * @example var attachment_link = gs.getProperty('glide.servlet.uri');
      * gs.info(attachment_link);
      */

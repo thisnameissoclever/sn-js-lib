@@ -8,7 +8,9 @@ class GlideRecord {
      * Creates an instance of the GlideRecord class for the specified table.
      * @param {String} tableName The table to be used.
      */
-    constructor(tableName) {}
+    constructor(tableName) {
+    	this.tableName = tableName;
+	}
     /**
      * Adds a filter to return active records.
      * @returns Filter to return active records.
@@ -254,8 +256,8 @@ class GlideRecord {
     deleteRecord() {}
     /**
      * Defines a GlideRecord based on the specified expression of 'name = value'.
-     * @param {Object} name Column name
-     * @param {Object} value Value to match. If value is not specified, then the expression used is
+     * @param {Object} name Column name to match (if two arguments are specified), or sys_id (if one is specified)
+     * @param {Object} [value] Value to match. If value is not specified, then the expression used is
      * 'sys_id = name'.
      * @returns True if one or more matching records was found. False if no matches
      * found.
@@ -382,7 +384,7 @@ class GlideRecord {
     getLastErrorMessage() {}
     /**
      * Retrieves a link to the current record.
-     * @param {Boolean} noStack If true, the sysparm_stack parameter is not appended to the link. The parameter
+     * @param {Boolean} [noStack] If true, the sysparm_stack parameter is not appended to the link. The parameter
      * sysparm_stack specifies the page to visit after closing the current link.
      * @returns A link to the current record as a string.
      * @example gr = new GlideRecord('incident');
@@ -655,7 +657,7 @@ class GlideRecord {
     /**
      * Updates the GlideRecord with any changes that have been made. If the record does not
      * already exist, it is inserted.
-     * @param {String} reason The reason for the update. The reason is displayed in the audit record.
+     * @param {String} [reason] The reason for the update. The reason is displayed in the audit record.
      * @returns Unique ID of the new or updated record. Returns null if the update
      * fails.
      * @example var gr = new GlideRecord('incident')
