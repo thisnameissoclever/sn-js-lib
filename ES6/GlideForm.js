@@ -499,17 +499,6 @@ class GlideForm {
     showErrorBox(name, message, scrollForm) {}
     /**
      * Displays either an informational or error message under the specified form field
-     * (either a control object or the name of the field). If the control or field is off the screen,
-     * the form is scrolled to the field.
-     * @param {String} field Name of the field or control.
-     * @param {String} message Message to display.
-     * @param {String} type "error","info", or "warning".
-     * @returns Method does not return a value
-     * @example g_form.showFieldMsg('impact','Low impact response time can be one week','info');
-     */
-    showFieldMsg(field, message, type) {}
-    /**
-     * Displays either an informational or error message under the specified form field
      * (either a control object or the name of the field).  If the control or field is currently off
      * the screen and scrollForm is true, the form is scrolled to the field.
      * @param {String} field Name of the field or control.

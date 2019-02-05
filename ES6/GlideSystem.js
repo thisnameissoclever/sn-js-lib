@@ -169,11 +169,11 @@ class GlideSystem {
     /**
      * Writes a debug message to the system log.
      * @param {String} message The log message with place holders for any variable arguments.
-     * @param {Object} param1 (Optional) First variable argument.
-     * @param {Object} param2 (Optional) Second variable argument.
-     * @param {Object} param3 (Optional) Third variable argument.
-     * @param {Object} param4 (Optional) Fourth variable argument.
-     * @param {Object} param5 (Optional) Fifth variable argument.
+     * @param {Object} [param1] (Optional) First variable argument.
+     * @param {Object} [param2] (Optional) Second variable argument.
+     * @param {Object} [param3] (Optional) Third variable argument.
+     * @param {Object} [param4] (Optional) Fourth variable argument.
+     * @param {Object} [param5] (Optional) Fifth variable argument.
      * @returns Method does not return a value
      * @example gs.debug("This is a debug message");
      * var myFirstName = "Abel";

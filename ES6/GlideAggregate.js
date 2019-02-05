@@ -1,12 +1,8 @@
-/**
- * GlideAggregate enables you to easily create database aggregation
- * queries.
- * @class GlideAggregate
- * @typedef {Object}  GlideAggregate
- */
+//defer classes/GlideAggregate.js
 class GlideAggregate {
     /**
      * Creates a GlideAggregate object on the specified table.
+	 * @interface
      * @param {String} tableName Name of the table.
      */
     constructor(tableName) {}

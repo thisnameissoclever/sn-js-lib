@@ -3,7 +3,7 @@
  * @class GlideRecord
  * @typedef {Object}  GlideRecord
  */
-class GlideRecord {
+export class GlideRecord {
     /**
      * Creates an instance of the GlideRecord class for the specified table.
      * @param {String} tableName The table to be used.
@@ -32,7 +32,11 @@ class GlideRecord {
      * gs.addInfoMessage(gr.number);
      * }
      */
-    addEncodedQuery(query) {}
+    addEncodedQuery(query) {
+    	this.params = [];
+    	this.description = '';
+    	this.example = '';
+	}
     /**
      * Applies a pre-defined GlideDBFunctionBuilder object to a record.
      * @param {Object} fun A GlideDBFunctionBuilder object that defines a SQL operation.
@@ -439,7 +443,9 @@ class GlideRecord {
      * gr.next() ;
      * gs.info(gr.getValue('number'));
      */
-    getValue(name) {}
+    getValue(name) {
+    	this.name = name;
+	}
     /**
      * Determines if there are any more records in the GlideRecord object.
      * @returns True if there are more records in the query result set.
