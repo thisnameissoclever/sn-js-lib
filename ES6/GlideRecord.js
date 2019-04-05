@@ -292,12 +292,13 @@ export class GlideRecord {
     getClassDisplayValue() {}
     /**
      * Retrieves the display value for the current record.
+	 * @param {String} [fieldName] The field name. If unspecified, gets the display value of the record itself.
      * @returns The display value for the current record.
      * @example var gr = new GlideRecord('incident');
      * gr.get('sys_id','ef43c6d40a0a0b5700c77f9bf387afe3');
      * gs.info(gr.getDisplayValue());
      */
-    getDisplayValue() {}
+    getDisplayValue(fieldName) {}
     /**
      * Returns the element's descriptor.
      * @returns Element's descriptor
@@ -448,7 +449,7 @@ export class GlideRecord {
 	}
     /**
      * Determines if there are any more records in the GlideRecord object.
-     * @returns True if there are more records in the query result set.
+     * @returns {Boolean} True if there are more records in the query result set.
      * @example var rec = new GlideRecord('incident');
      * rec.query();
      * if (rec.hasNext()) {
@@ -468,7 +469,7 @@ export class GlideRecord {
     initialize() {}
     /**
      * Inserts a new record using the field values that have been set for the current record.
-     * @returns Unique ID of the inserted record, or null if the record is not
+     * @returns {string} Unique ID of the inserted record, or null if the record is not
      * inserted.
      * @example var gr = new GlideRecord('incident');
      * gr.initialize();

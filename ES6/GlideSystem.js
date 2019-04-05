@@ -365,7 +365,7 @@ class GlideSystem {
      * Gets the value of a Glide property. If the property is not found, returns an alternate
      * value.
      * @param {String} key The key for the property whose value should be returned.
-     * @param {Object} alt (Optional) Alternate object to return if the property is not found.
+     * @param {Object} [alt] (Optional) Alternate object to return if the property is not found.
      * @returns {String} The value of the Glide property, or the alternate object defined above.
      * @example var attachment_link = gs.getProperty('glide.servlet.uri');
      * gs.info(attachment_link);
@@ -492,11 +492,11 @@ class GlideSystem {
     /**
      * Writes an info message to the system log.
      * @param {String} message The log message with place holders for any variable arguments.
-     * @param {Object} param1 (Optional) First variable argument.
-     * @param {Object} param2 (Optional) Second variable argument.
-     * @param {Object} param3 (Optional) Third variable argument.
-     * @param {Object} param4 (Optional) Fourth variable argument.
-     * @param {Object} param5 (Optional) Fifth variable argument.
+     * @param {Object} [param1] (Optional) First variable argument.
+     * @param {Object} [param2] (Optional) Second variable argument.
+     * @param {Object} [param3] (Optional) Third variable argument.
+     * @param {Object} [param4] (Optional) Fourth variable argument.
+     * @param {Object} [param5] (Optional) Fifth variable argument.
      * @returns Method does not return a value
      * @example gs.info("This is an info message");
      * var myFirstName = "Abel";
