@@ -250,9 +250,9 @@ class GlideSystem {
      * Queues an event for the event manager.
      * @param {String} name Name of the event being queued.
      * @param {Object} instance GlideRecord object, such as "current".
-     * @param {String} parm1 (Optional) Saved with the instance if specified.
-     * @param {String} parm2 (Optional) Saved with the instance if specified.
-     * @param {String} queue Name of the queue.
+     * @param {String} [parm1] (Optional) Saved with the instance if specified.
+     * @param {String} [parm2] (Optional) Saved with the instance if specified.
+     * @param {String} [queue] Name of the queue.
      * @returns Method does not return a value
      * @example if (current.operation() != 'insert' &amp;&amp; current.comments.changes()) {
      * gs.eventQueue('incident.commented', current, gs.getUserID(), gs.getUserName());
@@ -606,7 +606,7 @@ class GlideSystem {
      * scope.
      * @param {String} key The key for the property to be set.
      * @param {String} value The value of the property to be set.
-     * @param {String} description A description of the property.
+     * @param {String} [description] A description of the property.
      * @returns Method does not return a value
      * @example gs.setProperty("glide.foo","bar","foo");
      * gs.info(gs.getProperty("glide.foo"));

@@ -67,8 +67,8 @@ class GlideAggregate {
     /**
      * Adds a query to the aggregate.
      * @param {String} name The query to add.
-     * @param {String} operator The operator for the query.
-     * @param {String} value The list of values to include in the query.
+     * @param {String} [operator] The operator for the query.
+     * @param {String} [value] The list of values to include in the query.
      * @returns The query condition.
      * @example //Number of incidents varies depending on the current state
      * //of the incident table

@@ -546,7 +546,7 @@ export class GlideRecord {
     next() {}
     /**
      * Retrieves the current operation being performed, such as insert, update, or delete.
-     * @returns The current operation.
+     * @returns {string} The current operation.
      * @example //Commonly used in a business rule, returns insert if the current operation is insert
      * gs.info("current operation " + current.operation());
      */
