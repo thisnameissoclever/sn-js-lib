@@ -9,7 +9,7 @@ class GlideAggregate {
     /**
      * Adds an aggregate.
      * @param {String} agg Name of the aggregate to add, for example, COUNT, MIN, or MAX
-     * @param {String} name (Optional) Name of the column to aggregate. Null is the default.
+     * @param {String} [name] (Optional) Name of the column to aggregate. Null is the default.
      * @returns Method does not return a value
      * @example var count = new GlideAggregate('incident');
      * count.addAggregate('COUNT');
@@ -94,8 +94,8 @@ class GlideAggregate {
     /**
      * Gets the value of an aggregate from the current record.
      * @param {String} agg The type of the aggregate, for example, SUM or Count.
-     * @param {String} name Name of the field to get the aggregate from.
-     * @returns The value of the aggregate.
+     * @param {String} [name] Name of the field to get the aggregate from.
+     * @returns {string|number} The value of the aggregate.
      * @example var count = new GlideAggregate('incident');
      * count.addAggregate('COUNT');
      * count.query();
@@ -166,7 +166,7 @@ class GlideAggregate {
     /**
      * Gets the value of a field.
      * @param {String} name The name of the field.
-     * @returns The value of the field.
+     * @returns {string} The value of the field.
      * @example var count = new GlideAggregate('incident');
      * count.addAggregate('MIN', 'sys_mod_count');
      * count.addAggregate('MAX', 'sys_mod_count');
