@@ -391,7 +391,7 @@ export class GlideRecord {
      * Retrieves a link to the current record.
      * @param {Boolean} [noStack] If true, the sysparm_stack parameter is not appended to the link. The parameter
      * sysparm_stack specifies the page to visit after closing the current link.
-     * @returns A link to the current record as a string.
+     * @returns {String} A link to the current record as a string.
      * @example gr = new GlideRecord('incident');
      * gr.addActiveQuery();
      * gr.addQuery("priority", 1);

@@ -10,7 +10,7 @@ class RESTAPIRequest {
      * Returns the value of a specific header from the web service request.
      * @param {String} header The name of the header, such as accept or
      * content-type.
-     * @returns The value of the specified header.
+     * @returns {string} The value of the specified header.
      * @example var acceptHeader = request.getHeader('accept');
      */
     getHeader(header) {}

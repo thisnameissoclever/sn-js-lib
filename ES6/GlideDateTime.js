@@ -3,12 +3,14 @@
  * GlideDateTime objects, such as instantiating GlideDateTime objects or working with
  * glide_date_time fields.
  * @class GlideDateTime
+ * @interface
  * @typedef {Object}  GlideDateTime
  */
 class GlideDateTime {
     /**
      * Instantiates a new GlideDateTime object with the current date and time in Greenwich
      * Mean Time (GMT).
+	 * @interface
      */
     constructor() {}
     /**
