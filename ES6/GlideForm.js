@@ -250,7 +250,7 @@ class GlideForm {
     /**
      * Returns the value of the specified field.
      * @param {String} fieldName The field name.
-     * @returns The value of the specified field.
+     * @returns {String} The value of the specified field.
      * @example function onChange(control, oldValue, newValue, isLoading) {
      * alert(g_form.getValue('short_description'));
      * }
