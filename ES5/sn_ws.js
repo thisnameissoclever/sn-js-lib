@@ -12,6 +12,7 @@ var sn_ws = {
 	'RESTMessageV2' : function(name, methodName) {
 		/**
 		 * Send the REST message to the endpoint.
+		 * @returns {RESTResponseV2}
 		 */
 		this.execute = function() {};
 		/**
@@ -106,7 +107,7 @@ var sn_ws = {
 		this.setQueryParameter = function(name, value) {};
 		/**
 		 *
-		 * @param {string} body
+		 * @param {string|Object} body
 		 */
 		this.setRequestBody = function(body) {};
 		/**

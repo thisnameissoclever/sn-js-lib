@@ -667,7 +667,12 @@ class GlideRecord {
 	applyTemplate(Template) {
 	}
 	
-	update(Object) {
+	/**
+	 *
+	 * @param {String} [reason=] - The reason for the update (optional)
+	 * @returns {String|null} The sys_id of the new or updated record. Returns null if the update fails.
+	 */
+	update(reason) {
 	}
 	
 	/**
