@@ -540,6 +540,13 @@ class GlideRecord {
 	isValidField(fieldName) {
 	}
 	
+	/**
+	 * @returns {boolean} Flag that indicates whether a record was actually returned by the query/get operation.
+	 */
+	isValidRecord() {
+	
+	}
+	
 	operation() {
 	}
 	
