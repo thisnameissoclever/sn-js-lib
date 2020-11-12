@@ -162,6 +162,9 @@ function GlideSystem () {
 	this.getSession = function() { };
 	this.getSessionID = function() { };
 	this.getTrivialMessages = function() { };
+	/**
+	 * @returns {GlideUser}
+	 */
 	this.getUser = function() { return new User(); };
 	this.getUserDisplayName = function() { };
 	this.getUserID = function() { };

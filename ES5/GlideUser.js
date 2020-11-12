@@ -97,6 +97,9 @@ var GlideUser = Class.create({
     setBannerText: function(s) {
         this.bannerText = s;
     },
+    getUserByID: function(idOrUserName) {
+        return 'something';
+    },
     getBannerText: function() {
         return this.bannerText;
     },

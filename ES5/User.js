@@ -21,6 +21,7 @@
     this.getDomainID = function () { };
     this.getDomainDisplayValue = function () { };
     this.getManagerID = function () { };
+    this.getUserByID = function () { };
 
     //------------------------------------------------------------------------------//
     //--------------------Security and Group Functions------------------------------//

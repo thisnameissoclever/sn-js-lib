@@ -1470,9 +1470,9 @@ class g_form {
 	 * input - name (string) of the field or the control (object) itself for the field.
 	 * message - Message string.
 	 * type - string either "info" or "error".
-	 * scrollForm (optional) - true means to scroll down to the field.  False means do not scroll down to the
-	 *    field.  If not specified, the property glide.ui.scroll_to_message_field is used to determine
-	 *    whether scrolling should occur.
+	 * scrollForm (optional) - true means to scroll down to the field.  False means do not scroll
+	 * down to the field.  If not specified, the property glide.ui.scroll_to_message_field is used
+	 * to determine whether scrolling should occur.
 	 */
 	showFieldMsg(input, message, type, /* optional */ scrollForm) {
 		var msgClass;
@@ -1612,9 +1612,9 @@ class g_form {
 	 * Show an error message below the indicated form field.
 	 * input - name (string) of the field or the control (object) itself for the field.
 	 * message - Message string.
-	 * scrollForm (optional) - true means to scroll down to the field.  False means do not scroll down to the
-	 *    field.  If not specified, the property glide.ui.scroll_to_message_field is used to determine
-	 *    whether scrolling should occur.
+	 * scrollForm (optional) - true means to scroll down to the field.  False means do not scroll
+	 * down to the field.  If not specified, the property glide.ui.scroll_to_message_field is used
+	 * to determine whether scrolling should occur.
 	 */
 	showErrorBox(input, message, /* optional */ scrollForm) {
 		this.showFieldMsg(input, message, "error", scrollForm);
@@ -1802,6 +1802,10 @@ class g_form {
 	getAction() {
 		return this.action;
 	}
+	
+	clearMessages() {
+	
+	};
 }
 
 var GlideFormPrefixHandler = class {

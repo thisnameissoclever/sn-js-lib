@@ -436,7 +436,7 @@ export class GlideRecord {
     getUniqueValue() {}
     /**
      * Retrieves the string value of an underlying element in a field.
-     * @param {String} name The name of the field to get the value from.
+     * @param {String} fieldName The name of the field to get the value from.
      * @returns The value of the field.
      * @example var gr = new GlideRecord('incident');
      * gr.orderBy('number');
@@ -444,8 +444,8 @@ export class GlideRecord {
      * gr.next() ;
      * gs.info(gr.getValue('number'));
      */
-    getValue(name) {
-    	this.name = name;
+    getValue(fieldName) {
+    	this.name = fieldName;
 	}
     /**
      * Determines if there are any more records in the GlideRecord object.
@@ -640,8 +640,8 @@ export class GlideRecord {
     setNewGuidValue(guid) {}
     /**
      * Sets the value of the field with the specified name to the specified value.
-     * @param {String} name Name of the field.
-     * @param {Object} value The value to assign to the field.
+     * @param {String} fieldName Name of the field.
+     * @param {Object} newValue The value to assign to the field.
      * @returns Method does not return a value
      * @example var elementName = 'short_description';
      * var gr = new GlideRecord('incident');
@@ -649,7 +649,7 @@ export class GlideRecord {
      * gr.setValue(elementName, "My DB is not working");
      * gr.insert();
      */
-    setValue(name, value) {}
+    setValue(fieldName, newValue) {}
     /**
      * Enables or disables the running of business rules, script engines, and
      * audit.

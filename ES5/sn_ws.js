@@ -15,6 +15,7 @@ var sn_ws = {
 		 * @returns {RESTResponseV2}
 		 */
 		this.execute = function() {};
+		this.getStatusCode = function() {};
 		/**
 		 * Send the REST message to the endpoint asynchronously. The instance does not wait for a response from the web service provider when making asynchronous calls.
 		 */

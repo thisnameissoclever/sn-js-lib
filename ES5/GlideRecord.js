@@ -39,6 +39,7 @@ class GlideRecord {
 		this.initialized = true;
 		this.z = null;
 	}
+	initialize() {}
 	
 	addActiveQuery() {}
 	addDomainQuery(GlideRecord) {
@@ -493,7 +494,7 @@ class GlideRecord {
 	 *  call the .addOrCondition() method of the GlideElement class.
 	 * @param s {string}
 	 * @param o [*]
-	 * @param oo [*]
+	 * @param [oo] [*]
 	 */
 	addOrCondition(s, o, oo) {
 	}
@@ -628,9 +629,9 @@ class GlideRecord {
 	 * Retrieve the PRIMITIVE value of a given field. <br />
 	 * Does not work with dot-walked or variable fields. For those, append
 	 *  ".toString()" to retrieve a primitive (Example: gr.ref.field.toString())
-	 * @param fieldToGet {string}
+	 * @param fieldName {string}
 	 */
-	getValue(fieldToGet) {
+	getValue(fieldName) {
 	}
 	
 	
@@ -661,7 +662,7 @@ class GlideRecord {
 	setQueryReferences(Boolean) {
 	}
 	
-	setValue(String, Object) {
+	setValue(fieldName, newValue) {
 	}
 	
 	setWorkflow(Boolean) {
